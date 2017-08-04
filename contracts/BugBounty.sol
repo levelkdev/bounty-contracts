@@ -3,7 +3,6 @@ pragma solidity ^0.4.4;
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract BugBounty is Ownable {
-  address owner;
   uint payoutCritical;
   uint payoutHigh;
   uint payoutMedium;
@@ -26,10 +25,6 @@ contract BugBounty is Ownable {
 
   function resolveClaim(bytes32 _claimHash, uint payout) onlyOwner {
 
-  }
-
-  function getOwner() returns (address) {
-    return owner;
   }
 
 }
