@@ -20,10 +20,10 @@ Deploy contracts to RPC provider at port `8545`.
 $ yarn redeploy
 ```
 
-### Recompile
+### Compile
 Recompile your contracts without rebuilding artifacts
 ```
-$ yarn recompile
+$ yarn compile
 ```
 
 ### Test
