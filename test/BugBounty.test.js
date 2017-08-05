@@ -20,16 +20,17 @@ describe('BugBounty', () => {
     const err = await asyncExpectErr(
       bugBounty.resolveClaim(claimHash, resolutionHash, 1000, { from: accounts[1] })
     )
-    expect(error).toBeDefined()
+    expect(err).toBeDefined()
   })
 
   test('BugBounty is initialized with the correct parameters', async () => {
     const bugBounty = await newBugBounty()
-    expect(parseInt(await bugBounty.payoutCritical())).toEqual(500)
-    expect(parseInt(await bugBounty.payoutHigh())).toEqual(400)
-    expect(parseInt(await bugBounty.payoutMedium())).toEqual(300)
-    expect(parseInt(await bugBounty.payoutLow())).toEqual(200)
-    expect(parseInt(await bugBounty.payoutNote())).toEqual(100)
+    const state = await bugBounty.state()
+    expect(parseInt(state.props.payoutCritical)).toEqual(500)
+    expect(parseInt(state.props.payoutHigh)).toEqual(400)
+    expect(parseInt(state.props.payoutMedium)).toEqual(300)
+    expect(parseInt(state.props.payoutLow)).toEqual(200)
+    expect(parseInt(state.props.payoutNote)).toEqual(100)
     // TODO: check codeHash is expected value
   })
 })

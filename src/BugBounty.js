@@ -18,7 +18,7 @@ export default _.assign(
       codeHash
     ) => {
       console.log('new BugBounty')
-      const BugBounty = await BugBounty.new(
+      const bugBounty = await BugBounty.new(
         payoutCritical,
         payoutHigh,
         payoutMedium,
@@ -26,8 +26,8 @@ export default _.assign(
         payoutNote,
         codeHash
       )
-      console.log(`BugBounty created: ${BugBounty.address}`)
-      return BugBounty
+      console.log(`BugBounty created: ${bugBounty.address}`)
+      return bugBounty
     }
   }
 ) */
