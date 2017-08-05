@@ -3,7 +3,7 @@ import requireContract from './utils/requireContract'
 
 export default requireContract('BugBounty')
 
-/* 
+/*
 const BugBounty = requireContract('BugBounty')
 
 export default _.assign(
@@ -18,7 +18,7 @@ export default _.assign(
       codeHash
     ) => {
       console.log('new BugBounty')
-      const bugBounty = await BugBounty.new(
+      const BugBounty = await BugBounty.new(
         payoutCritical,
         payoutHigh,
         payoutMedium,
@@ -26,8 +26,8 @@ export default _.assign(
         payoutNote,
         codeHash
       )
-      console.log(`BugBounty created: ${bugBounty.address}`)
-      return bugBounty
+      console.log(`BugBounty created: ${BugBounty.address}`)
+      return BugBounty
     }
   }
 ) */

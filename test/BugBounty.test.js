@@ -6,16 +6,31 @@ import BugBounty from 'BugBounty'
 const { accounts } = web3.eth
 
 describe('BugBounty', () => {
+  const claimHash = 'CLAIM_HASH'
+  const resolutionHash = 'RESOLUTION_HASH'
+
   test('creating with valid params should succeed', async () => {
     expect((await newBugBounty()).address).toBeDefined()
   })
 
   test('resolveClaim should throw if sender is not owner', async () => {
     const bugBounty = await newBugBounty()
+
+    // TODO: Figure out why EVM error gets logged but doesn't get caught by asyncExpectErr
     const err = await asyncExpectErr(
-      bugBounty.resolveClaim('rza', 1000, { from: accounts[1] })
+      bugBounty.resolveClaim(claimHash, resolutionHash, 1000, { from: accounts[1] })
     )
-    expect(err).toBeDefined()
+    expect(error).toBeDefined()
+  })
+
+  test('BugBounty is initialized with the correct parameters', async () => {
+    const bugBounty = await newBugBounty()
+    expect(parseInt(await bugBounty.payoutCritical())).toEqual(500)
+    expect(parseInt(await bugBounty.payoutHigh())).toEqual(400)
+    expect(parseInt(await bugBounty.payoutMedium())).toEqual(300)
+    expect(parseInt(await bugBounty.payoutLow())).toEqual(200)
+    expect(parseInt(await bugBounty.payoutNote())).toEqual(100)
+    // TODO: check codeHash is expected value
   })
 })
 
