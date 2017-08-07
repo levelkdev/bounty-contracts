@@ -1,7 +1,7 @@
 /* global artifacts */
 
-const BugBounty = artifacts.require('./BugBounty.sol')
+const BugBountyFactory = artifacts.require('./BugBountyFactory.sol')
 
 module.exports = function (deployer) {
-  deployer.deploy(BugBounty)
+  deployer.deploy(BugBountyFactory)
 }
