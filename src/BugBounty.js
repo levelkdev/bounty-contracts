@@ -1,9 +1,6 @@
 import _ from 'lodash'
 import requireContract from './utils/requireContract'
 
-export default requireContract('BugBounty')
-
-/*
 const BugBounty = requireContract('BugBounty')
 
 export default _.assign(
@@ -30,4 +27,4 @@ export default _.assign(
       return bugBounty
     }
   }
-) */
+)

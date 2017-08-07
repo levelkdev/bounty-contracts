@@ -1,5 +1,7 @@
-const BugBounty = artifacts.require("./BugBounty.sol");
+/* global artifacts */
 
-module.exports = function(deployer) {
-  deployer.deploy(BugBounty);
-};
+const BugBounty = artifacts.require('./BugBounty.sol')
+
+module.exports = function (deployer) {
+  deployer.deploy(BugBounty)
+}
