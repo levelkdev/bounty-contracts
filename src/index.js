@@ -1,7 +1,7 @@
-import BugBounty from './BugBounty'
-import BugBountyFactory from './BugBountyFactory'
+var BugBounty = require('./BugBounty')
+var BugBountyFactory = require('./BugBountyFactory')
 
-export default {
-  BugBounty,
-  BugBountyFactory
+module.exports = {
+  BugBounty: BugBounty,
+  BugBountyFactory: BugBountyFactory
 }

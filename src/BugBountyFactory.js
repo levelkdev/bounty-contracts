@@ -1,2 +1,4 @@
+import _ from 'lodash'
 import requireContract from './utils/requireContract'
-export default requireContract('BugBountyFactory')
+
+module.exports = _.assign({}, requireContract('BugBountyFactory'))

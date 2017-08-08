@@ -31,11 +31,12 @@
     "truffle-artifactor": "1.0.2"
   },
   "scripts": {
-    "build": "yarn compile && yarn build:artifacts && yarn build:commonjs",
+    "build": "yarn cleanup && yarn compile && yarn build:artifacts && yarn build:commonjs",
     "build:artifacts": "node ./scripts/buildArtifacts.js",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-    "deploy": "truffle migrate --reset && yarn build:artifacts",
+    "cleanup": "rm -rf build/ && mkdir build",
     "compile": "truffle compile --all",
+    "deploy": "truffle migrate --reset && yarn build:artifacts",
     "test": "yarn build && scripts/test.sh",
     "run-jest": "jest",
     "lint": "standard --verbose | snazzy"

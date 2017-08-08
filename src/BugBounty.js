@@ -3,7 +3,7 @@ import requireContract from './utils/requireContract'
 
 const BugBounty = requireContract('BugBounty')
 
-export default _.assign(
+module.exports = _.assign(
   _.assign({}, BugBounty),
   {
     new: async (
