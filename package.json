@@ -8,8 +8,6 @@
   "license": "MIT",
   "main": "src/index.js",
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
-    "babel-register": "^6.24.1",
     "truffle-ext": "^0.1.4",
     "zeppelin-solidity": "^1.2.0"
   },
