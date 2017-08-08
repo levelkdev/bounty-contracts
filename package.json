@@ -7,6 +7,10 @@
   },
   "license": "MIT",
   "main": "src/index.js",
+  "files": [
+    "build",
+    "src"
+  ],
   "dependencies": {
     "truffle-ext": "^0.1.4",
     "zeppelin-solidity": "^1.2.0"
