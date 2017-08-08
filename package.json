@@ -6,31 +6,35 @@
     "name": "Chris Whinfrey"
   },
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "files": [
     "build",
+    "lib",
     "src"
   ],
   "dependencies": {
     "ethjs-abi": "^0.2.0",
     "truffle-blockchain-utils": "^0.0.3",
-    "truffle-ext": "^0.1.4",
+    "truffle-ext": "^0.1.5",
     "zeppelin-solidity": "^1.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.0.4",
     "jest-cli": "^20.0.4",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
     "truffle-artifactor": "1.0.2"
   },
   "scripts": {
-    "build": "yarn compile && yarn build-artifacts",
-    "build-artifacts": "node ./scripts/buildArtifacts.js",
-    "deploy": "truffle migrate --reset && yarn build-artifacts",
+    "build": "yarn compile && yarn build:artifacts && yarn build:commonjs",
+    "build:artifacts": "node ./scripts/buildArtifacts.js",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
+    "deploy": "truffle migrate --reset && yarn build:artifacts",
     "compile": "truffle compile --all",
     "test": "yarn build && scripts/test.sh",
     "run-jest": "jest",
