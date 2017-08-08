@@ -38,6 +38,7 @@
     "compile": "truffle compile --all",
     "deploy": "truffle migrate --reset && yarn build:artifacts",
     "test": "yarn build && scripts/test.sh",
+    "testrpc": "scripts/runTestrpc.sh",
     "run-jest": "jest",
     "lint": "standard --verbose | snazzy"
   },
