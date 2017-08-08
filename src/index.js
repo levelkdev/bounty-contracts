@@ -1,2 +1,7 @@
-export * from './BugBounty'
-export * from './BugBountyFactory'
+import BugBounty from './BugBounty'
+import BugBountyFactory from './BugBountyFactory'
+
+export default {
+  BugBounty,
+  BugBountyFactory
+}
