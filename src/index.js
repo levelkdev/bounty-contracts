@@ -1,7 +1,9 @@
 var BugBounty = require('./BugBounty')
 var BugBountyFactory = require('./BugBountyFactory')
 
-module.exports = {
-  BugBounty: BugBounty,
-  BugBountyFactory: BugBountyFactory
+module.exports = (opts) => {
+  return {
+    BugBounty: BugBounty(opts),
+    BugBountyFactory: BugBountyFactory(opts)
+  }
 }

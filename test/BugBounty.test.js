@@ -1,9 +1,15 @@
 /* global describe test expect */
 
-import { web3 } from 'utils/w3'
+import web3 from 'helpers/web3'
 import BugBounty from 'BugBounty'
 
 const { accounts } = web3.eth
+
+const opts = {
+  web3: web3,
+  from: accounts[0],
+  gas: 4500000
+}
 
 describe('BugBounty', () => {
   const claimHash = 'CLAIM_HASH'
@@ -37,7 +43,7 @@ describe('BugBounty', () => {
 
 async function newBugBounty () {
   const bugBounty = await tryAsync(
-    BugBounty.new(500, 400, 300, 200, 100, 'rza', { from: accounts[0] })
+    BugBounty(opts).new(500, 400, 300, 200, 100, 'rza', { from: accounts[0] })
   )
   return bugBounty
 }

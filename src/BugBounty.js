@@ -1,28 +1,30 @@
 import _ from 'lodash'
-import requireContract from './utils/requireContract'
+import requireContract from './requireContract'
 
-const BugBounty = requireContract('BugBounty')
+module.exports = (opts) => {
+  const BugBounty = requireContract('BugBounty', opts)
 
-module.exports = _.assign(
-  _.assign({}, BugBounty),
-  {
-    new: async (
-      payoutCritical,
-      payoutHigh,
-      payoutMedium,
-      payoutLow,
-      payoutNote,
-      codeHash
-    ) => {
-      const bugBounty = await BugBounty.new(
+  return _.assign(
+    _.assign({}, BugBounty),
+    {
+      new: async (
         payoutCritical,
         payoutHigh,
         payoutMedium,
         payoutLow,
         payoutNote,
         codeHash
-      )
-      return bugBounty
+      ) => {
+        const bugBounty = await BugBounty.new(
+          payoutCritical,
+          payoutHigh,
+          payoutMedium,
+          payoutLow,
+          payoutNote,
+          codeHash
+        )
+        return bugBounty
+      }
     }
-  }
-)
+  )
+}

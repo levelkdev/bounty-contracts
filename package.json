@@ -45,7 +45,8 @@
   "jest": {
     "moduleDirectories": [
       "node_modules",
-      "src"
+      "src",
+      "test"
     ]
   }
 }
