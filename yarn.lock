@@ -893,13 +893,13 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
+"bignumber.js@git+https://github.com/debris/bignumber.js#master":
+  version "2.0.7"
+  resolved "git+https://github.com/debris/bignumber.js#c7a38de919ed75e6fb6ba38051986e294b328df9"
+
 "bignumber.js@git+https://github.com/debris/bignumber.js.git#94d7146671b9719e00a09c29b01a691bc85048c2":
   version "2.0.7"
   resolved "git+https://github.com/debris/bignumber.js.git#94d7146671b9719e00a09c29b01a691bc85048c2"
-
-"bignumber.js@git+https://github.com/debris/bignumber.js.git#master":
-  version "2.0.7"
-  resolved "git+https://github.com/debris/bignumber.js.git#c7a38de919ed75e6fb6ba38051986e294b328df9"
 
 "bignumber.js@git+https://github.com/frozeman/bignumber.js-nolookahead.git":
   version "2.0.7"
@@ -4255,9 +4255,9 @@ truffle-contract@^1.0.1:
     truffle-contract-schema "0.0.5"
     web3 "^0.16.0"
 
-truffle-ext@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/truffle-ext/-/truffle-ext-0.1.5.tgz#094c230e57e3bdf1a9d611de84966fa1bd159301"
+truffle-ext@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/truffle-ext/-/truffle-ext-0.1.6.tgz#035ca04c1af15c6c9e7ef803cf1947b65bfa3a45"
   dependencies:
     lodash "^4.17.4"
 
