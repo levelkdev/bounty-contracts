@@ -6,6 +6,9 @@ import './BugBounty.sol';
 /// @dev Factory for creating new BugBounty contracts
 contract BugBountyFactory {
 
+  /*
+   *  Events
+   */
   event BugBountyCreated(
     address owner,
     BugBounty bugBounty,

@@ -11,10 +11,13 @@ const opts = {
   gas: 4500000
 }
 
-describe('BugBounty', () => {
-  const claimHash = 'CLAIM_HASH'
-  const resolutionHash = 'RESOLUTION_HASH'
+const codeHash = 'rza'
+const claimHash = 'CLAIM_HASH'
+const resolutionHash = 'RESOLUTION_HASH'
+const initialBalance = 30000000000000000000000
+const payout = 3
 
+describe('BugBounty', () => {
   test('creating with valid params should succeed', async () => {
     expect((await newBugBounty()).address).toBeDefined()
   })
@@ -39,11 +42,31 @@ describe('BugBounty', () => {
     expect(parseInt(state.props.payoutNote)).toEqual(100)
     // TODO: check codeHash is expected value
   })
+
+  test('BugBounty is initialized with the correct balance', async () => {
+    const bugBounty = await newBugBounty()
+    expect(parseInt(web3.eth.getBalance(bugBounty.address))).toEqual(initialBalance)
+  })
+
+  test('fileClaim does create valid claim', async () => {
+    const bugBounty = await newBugBounty()
+    await bugBounty.fileClaim(claimHash)
+    const isClaim = await bugBounty.isClaim(claimHash)
+    expect(isClaim).toEqual(true)
+  })
+
+  test('resolveClaim does resolve claim', async () => {
+    const bugBounty = await newBugBounty()
+    await bugBounty.fileClaim(claimHash)
+    await bugBounty.resolveClaim(claimHash, resolutionHash, payout)
+    const isResolved = await bugBounty.isResolved(claimHash)
+    expect(isResolved).toEqual(true)
+  })
 })
 
 async function newBugBounty () {
   const bugBounty = await tryAsync(
-    BugBounty(opts).new(500, 400, 300, 200, 100, 'rza', { from: accounts[0] })
+    BugBounty(opts).new(500, 400, 300, 200, 100, codeHash, { from: accounts[0], value: initialBalance })
   )
   return bugBounty
 }
