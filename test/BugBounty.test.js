@@ -3,7 +3,8 @@
 import web3 from 'helpers/web3'
 import BugBounty from 'BugBounty'
 
-const { accounts } = web3.eth
+const eth = web3.eth
+const { accounts } = eth
 
 const opts = {
   web3: web3,
@@ -14,8 +15,8 @@ const opts = {
 const codeHash = 'rza'
 const claimHash = 'CLAIM_HASH'
 const resolutionHash = 'RESOLUTION_HASH'
-const initialBalance = 30000000000000000000000
-const payout = 3
+const initialBalance = 3000000000000000000000
+const payout = 10000000000000000000
 
 describe('BugBounty', () => {
   test('creating with valid params should succeed', async () => {
@@ -45,7 +46,7 @@ describe('BugBounty', () => {
 
   test('BugBounty is initialized with the correct balance', async () => {
     const bugBounty = await newBugBounty()
-    const balance = web3.eth.getBalance(bugBounty.address)
+    const balance = eth.getBalance(bugBounty.address)
     expect(balance.valueOf()).toEqual(initialBalance.toString())
   })
 
@@ -62,6 +63,15 @@ describe('BugBounty', () => {
     await bugBounty.resolveClaim(claimHash, resolutionHash, payout)
     const isResolved = await bugBounty.isResolved(claimHash)
     expect(isResolved).toEqual(true)
+  })
+
+  test('payout is received when claim is resolved', async () => {
+    const bugBounty = await newBugBounty()
+    const claimOwner = accounts[2]
+    const initialBalance = eth.getBalance(claimOwner)
+    await bugBounty.fileClaim(claimHash, {from: claimOwner})
+    await bugBounty.resolveClaim(claimHash, resolutionHash, payout)
+    expect(new Number(initialBalance) + payout).toEqual(new Number(eth.getBalance(claimOwner)))
   })
 })
 
