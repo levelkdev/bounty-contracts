@@ -47,7 +47,8 @@ describe('BugBounty', () => {
   test('BugBounty is initialized with the correct balance', async () => {
     const bugBounty = await newBugBounty()
     const balance = eth.getBalance(bugBounty.address)
-    expect(balance.valueOf()).toEqual(initialBalance.toString())
+
+    expect(new Number(balance)).toEqual(new Number(initialBalance))
   })
 
   test('fileClaim does create valid claim', async () => {
