@@ -45,7 +45,8 @@ describe('BugBounty', () => {
 
   test('BugBounty is initialized with the correct balance', async () => {
     const bugBounty = await newBugBounty()
-    expect(parseInt(web3.eth.getBalance(bugBounty.address))).toEqual(initialBalance)
+    const balance = web3.eth.getBalance(bugBounty.address)
+    expect(balance.valueOf()).toEqual(initialBalance.toString())
   })
 
   test('fileClaim does create valid claim', async () => {
@@ -66,8 +67,9 @@ describe('BugBounty', () => {
 
 async function newBugBounty () {
   const bugBounty = await tryAsync(
-    BugBounty(opts).new(500, 400, 300, 200, 100, codeHash, { from: accounts[0], value: initialBalance })
+    BugBounty(opts).new(500, 400, 300, 200, 100, codeHash, { from: accounts[0] })
   )
+  await bugBounty.fundBugBounty({from: accounts[0], value: initialBalance})
   return bugBounty
 }
 

@@ -69,7 +69,6 @@ contract BugBounty is Ownable {
     bytes32 _codeHash
   )
     public
-    payable
   {
     payoutCritical = _payoutCritical;
     payoutHigh = _payoutHigh;
@@ -93,6 +92,9 @@ contract BugBounty is Ownable {
     return claims[claimHash].isResolved;
   }
 
+  // @dev Fund the bug bounty program
+  function fundBugBounty() payable {}
+
   /// @dev File a claim by submitting a hash of the claim content
   /// @param claimHash A hash of the claim's content
   function fileClaim(bytes32 claimHash) {
@@ -112,6 +114,6 @@ contract BugBounty is Ownable {
     claim.resolutionHash = resolutionHash;
     // TODO: Check for sufficient funds or is it fine to let the contract fail on it's own?
     claim.claimOwner.transfer(payout);
-    /*claim.isResolved = true;*/
+    claim.isResolved = true;
   }
 }
