@@ -36,7 +36,7 @@
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
     "cleanup": "rm -rf build/ && mkdir build",
     "compile": "truffle compile --all",
-    "deploy": "truffle migrate --reset && yarn build:artifacts",
+    "deploy": "yarn cleanup && truffle migrate --reset && yarn build:artifacts && yarn build:commonjs",
     "test": "yarn build && scripts/test.sh",
     "testrpc": "scripts/runTestrpc.sh",
     "run-jest": "jest",
