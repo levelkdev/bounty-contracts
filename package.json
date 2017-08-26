@@ -15,7 +15,7 @@
   "dependencies": {
     "ethjs-abi": "^0.2.0",
     "truffle-blockchain-utils": "^0.0.3",
-    "truffle-ext": "^0.1.6",
+    "truffle-ext": "^0.1.7",
     "zeppelin-solidity": "^1.2.0"
   },
   "devDependencies": {

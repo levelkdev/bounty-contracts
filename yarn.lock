@@ -4255,9 +4255,9 @@ truffle-contract@^1.0.1:
     truffle-contract-schema "0.0.5"
     web3 "^0.16.0"
 
-truffle-ext@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/truffle-ext/-/truffle-ext-0.1.6.tgz#035ca04c1af15c6c9e7ef803cf1947b65bfa3a45"
+truffle-ext@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/truffle-ext/-/truffle-ext-0.1.7.tgz#a8048b42d9f8c5a6024e5b3f1c50c5318dc0f94f"
   dependencies:
     lodash "^4.17.4"
 
