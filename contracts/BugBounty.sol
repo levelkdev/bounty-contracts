@@ -36,6 +36,8 @@ contract BugBounty is Ownable {
   uint public payoutNote;
   // Hash of the code being reviewed
   bytes32 public codeHash;
+  // IPFS hash for off-chain metadata
+  bytes public ipfsHash;
   mapping (bytes32 => Claim) public claims;
   // TODO: Add claimCount that tracks number of claims in mapping
   // uint public claimCount;
@@ -59,6 +61,7 @@ contract BugBounty is Ownable {
   /// @param _payoutMedium Payout for a medium level bug
   /// @param _payoutLow Payout for a low level bug
   /// @param _payoutNote Payout for a note level bug
+  /// @param _ipfsHash IPFS hash for off-chain metadata
   /// @param _codeHash A hash of the code relavant to the bounty
   function BugBounty(
     uint _payoutCritical,
@@ -66,6 +69,7 @@ contract BugBounty is Ownable {
     uint _payoutMedium,
     uint _payoutLow,
     uint _payoutNote,
+    bytes _ipfsHash,
     bytes32 _codeHash
   )
     public
@@ -75,6 +79,7 @@ contract BugBounty is Ownable {
     payoutMedium = _payoutMedium;
     payoutLow = _payoutLow;
     payoutNote = _payoutNote;
+    ipfsHash = _ipfsHash;
     codeHash = _codeHash;
   }
 
