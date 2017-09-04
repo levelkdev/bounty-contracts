@@ -22,6 +22,14 @@ contract BugBountyFactory {
   );
 
   /*
+   *  Storage
+   */
+  // mapping to verify that a bounty contract was created by this contract instance
+  mapping(address => bool) bountyExists;
+  // stores addresses of all BugBounty contracts
+  address[] public bounties;
+
+  /*
    *  Public functions
    */
   /// @dev creates a new BugBounty contract
@@ -53,6 +61,8 @@ contract BugBountyFactory {
       _ipfsHash,
       _codeHash
     );
+    bounties.push(bugBounty);
+    bountyExists[bugBounty] = true;
     BugBountyCreated(
       msg.sender,
       bugBounty,
@@ -64,6 +74,16 @@ contract BugBountyFactory {
       _ipfsHash,
       _codeHash
     );
+  }
+
+  /// @dev verifies that a bounty contract was created by this factory
+  function verifyBounty (address bountyAddress) returns(bool) {
+    return bountyExists[bountyAddress];
+  }
+
+  /// @dev gets total number of BugBounty contracts
+  function getBountiesCount() public constant returns(uint) {
+    return bounties.length;
   }
 
 }
