@@ -34,10 +34,10 @@ contract BugBounty is Ownable {
   uint public payoutMedium;
   uint public payoutLow;
   uint public payoutNote;
-  // Hash of the code being reviewed
-  bytes32 public codeHash;
   // IPFS hash for off-chain metadata
   bytes public ipfsHash;
+  // Hash of the code being reviewed
+  bytes32 public codeHash;
   mapping (bytes32 => Claim) public claims;
   // TODO: Add claimCount that tracks number of claims in mapping
   // uint public claimCount;

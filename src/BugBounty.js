@@ -13,6 +13,7 @@ module.exports = (opts) => {
         payoutMedium,
         payoutLow,
         payoutNote,
+        ipfsHash,
         codeHash
       ) => {
         const bugBounty = await BugBounty.new(
@@ -21,6 +22,7 @@ module.exports = (opts) => {
           payoutMedium,
           payoutLow,
           payoutNote,
+          ipfsHash,
           codeHash
         )
         return bugBounty

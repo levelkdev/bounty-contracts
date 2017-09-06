@@ -13,6 +13,7 @@ const opts = {
 }
 
 const codeHash = 'rza'
+const ipfsHash = '7202c6754d7caec5de9f122de2e189654d99062d'
 const claimHash = 'CLAIM_HASH'
 const resolutionHash = 'RESOLUTION_HASH'
 const initialBalance = 3000000000000000000000
@@ -78,7 +79,7 @@ describe('BugBounty', () => {
 
 async function newBugBounty () {
   const bugBounty = await tryAsync(
-    BugBounty(opts).new(500, 400, 300, 200, 100, codeHash, { from: accounts[0] })
+    BugBounty(opts).new(500, 400, 300, 200, 100, ipfsHash, codeHash, { from: accounts[0] })
   )
   await bugBounty.fundBugBounty({from: accounts[0], value: initialBalance})
   return bugBounty
