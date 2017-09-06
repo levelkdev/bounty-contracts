@@ -77,7 +77,7 @@ contract BugBountyFactory {
   }
 
   /// @dev verifies that a bounty contract was created by this factory
-  function verifyBounty (address bountyAddress) returns(bool) {
+  function verifyBounty (address bountyAddress) public constant returns(bool) {
     return bountyExists[bountyAddress];
   }
 
